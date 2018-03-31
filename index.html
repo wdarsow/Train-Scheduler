@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
     
-   
+    <!-- Link to Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
+    <!-- Link to Moment-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
     <!-- Image and text -->
@@ -18,79 +22,76 @@
             <div class="jumbotron">
                 <h3 class="topJumbo">Wade's Train-Scheduler Firebase Application</h3>
             </div>
-        <table class="table top-Table">
-            <h4>Current Train Schedule</h4>
-                <thead>
-                    <tr>
-                        <th scope="col">Train Name</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Frequency(min)</th>
-                        <th scope="col">Next Arrival</th>
-                        <th scope="col">Minutes Away</th>
-                    </tr>
-                </thead>
+    
+            <div class="panel panel-primary">
+                <div class="panel-heading">Current Train Schedule</div>
 
-                <tbody> 
-                    <tr>
-                        <th scope="row">Viper</th>
-                            <td>San Diego</td>
-                            <td>60</td>
-                            <td>5:00</td>
-                            <td>45</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Vulcher</th>
-                            <td>Orlando</td>
-                            <td>120</td>
-                            <td>Next Arrival</td>
-                            <td>90</td>
-                    </tr>
-                </tbody>
-        </table>
+                <!--table goes here-->
+                <table class="table top-Table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency(min)</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Minutes Away</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody class="trainTableBody" id="tableBody"> 
+                            <!--
+                            <tr>
+                                <th scope="row">Viper</th>
+                                    <td>San Diego</td>
+                                    <td>60</td>
+                                    <td>5:00</td>
+                                    <td>45</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Vulcher</th>
+                                    <td>Orlando</td>
+                                    <td>120</td>
+                                    <td>Next Arrival</td>
+                                    <td>90</td>
+                            </tr>
+                        -->
 
-        <div class="row">
-            <div class="col-sm">
-                <h4>Add Train</h4>
-
-                <form class="new-Train">
-                    <div class="form-group">
-                        <label for="textInput">Train Name</label>
-                        <input type="text" class="form-control" id="textInput" aria-describedby="textHelp" placeholder="Type in new sport here">
-                        <label for="textInput">Destination</label>
-                        <input type="text" class="form-control" id="textInput" aria-describedby="textHelp" placeholder="Type in new sport here">
-                        <label for="textInput">First Train Time (HH:mm - military time)</label>
-                        <input type="text" class="form-control" id="textInput" aria-describedby="textHelp" placeholder="Type in new sport here">
-                        <label for="textInput">Frequency (min)</label>
-                        <input type="text" class="form-control" id="textInput" aria-describedby="textHelp" placeholder="Type in new sport here">
+                        </tbody>
+                </table>
+            </div>
+        
+        
+            <div class="panel panel-primary">
+                <div class="panel-heading">Add Train</div>
+                    <div class="panel-body">
+                        
+                        <!--form goes here-->
+                        <form class="new-Train">
+                            <div class="form-group">
+                                <label for="textInput">Train Name</label>
+                                <input type="text" class="form-control" id="trainInput" aria-describedby="textHelp" placeholder="">
+                                <label for="textInput">Destination</label>
+                                <input type="text" class="form-control" id="trainInput2" aria-describedby="textHelp" placeholder="">
+                                <label for="textInput">First Train Time (HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="trainInput3" aria-describedby="textHelp" placeholder="">
+                                <label for="textInput">Frequency (min)</label>
+                                <input type="text" class="form-control" id="trainInput4" aria-describedby="textHelp" placeholder="">
+                            </div>
+                                <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+                        </form>
                     </div>
-                        <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
-                </form>
-            </div>        
-        </div>
-
-     <!--   <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand">
-                <img src=".\assets\images\train.jpeg" width="30" height="30" class="d-inline-block align-top" alt="checkmark">
-            </a>
-        </nav>
-    -->
-        <div class="row">
-            <div class="col-sm" id="buttonRow"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 image-Class" id="imageCol"></div>
-            <div class="col-sm-4" id="formCol"></div>
+            </div>  
         </div>
 
     </div>
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
         <!--jQuery CDN link-->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <script src=".\assets\javascript\moment.js"></script>
+        
     </body>
 </html>
