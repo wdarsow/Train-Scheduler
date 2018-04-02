@@ -1,6 +1,6 @@
 'use strict';
 
-// initial variable declarations
+// initial variable declarations 
 let trainName;
 let destination;
 let firstTrainTime;
